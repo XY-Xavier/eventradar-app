@@ -74,14 +74,11 @@
     <header class="bg-white border-b border-gray-200 sticky top-0 z-50" style="padding-top: max(env(safe-area-inset-top), 12px);">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3 min-w-0">
+                <div class="flex items-center gap-3">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#E60023] rounded-full flex items-center justify-center flex-shrink-0">
                         <i class="fas fa-compass text-white text-lg sm:text-xl"></i>
                     </div>
-                    <div class="min-w-0">
-                        <h1 class="text-xl sm:text-2xl font-bold text-gray-900">EventRadar</h1>
-                        <p class="text-xs sm:text-sm text-gray-600 truncate" id="citySubtitle">Multi-City Events</p>
-                    </div>
+                    <h1 class="hidden sm:block text-xl sm:text-2xl font-bold text-gray-900">EventRadar</h1>
                 </div>
                 <div class="flex items-center gap-2 flex-shrink-0">
                     <select id="citySelector" class="px-3 sm:px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none cursor-pointer transition">
@@ -198,12 +195,6 @@
                         </option>`
                     ).join('');
                     
-                    // Update subtitle
-                    const selectedCity = cities.find(c => c.code === currentCity);
-                    if (selectedCity) {
-                        document.getElementById('citySubtitle').textContent = selectedCity.name;
-                    }
-                    
                     // Load events for selected city
                     loadEvents();
                 }
@@ -216,12 +207,6 @@
         function onCityChange(e) {
             currentCity = e.target.value;
             localStorage.setItem('selectedCity', currentCity);
-            
-            // Update subtitle
-            const selectedCity = cities.find(c => c.code === currentCity);
-            if (selectedCity) {
-                document.getElementById('citySubtitle').textContent = selectedCity.name;
-            }
             
             // Reload events
             loadEvents();
