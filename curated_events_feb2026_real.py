@@ -16,7 +16,7 @@ CURATED_EVENTS = {
             'price': '$10',
             'url': 'https://www.eventbrite.com/e/sf-tech-startups-investors-innovators-networking-with-elevator-pitch-tickets-1980890263101',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'Women in Tech, Fintech, AI, Startups Networking Event SF',
@@ -27,7 +27,7 @@ CURATED_EVENTS = {
             'price': '$10',
             'url': 'https://www.eventbrite.com/e/women-in-tech-fintech-ai-startups-networking-event-elevator-pitch-sf-tickets-1979655068601',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop'
         },
         {
             'title': 'San Francisco Tech & Finance Networking Event',
@@ -38,7 +38,7 @@ CURATED_EVENTS = {
             'price': '$16',
             'url': 'https://www.eventbrite.ca/e/san-francisco-tech-finance-networking-event-tickets-1978194249251',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
         },
         {
             'title': 'Tech Networking Event In San Francisco',
@@ -49,7 +49,7 @@ CURATED_EVENTS = {
             'price': '$16',
             'url': 'https://www.eventbrite.com/e/tech-networking-event-in-san-francisco-tickets-1968265144030',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop'
         },
         {
             'title': 'Age of Tech x Biopharma Panel & Mixer',
@@ -60,7 +60,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.eventbrite.com/e/age-of-tech-x-biopharma-panel-mixer-tickets-1974500820105',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop'
         },
         {
             'title': 'Women in Tech SF 2026',
@@ -71,7 +71,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.eventbrite.com/e/women-in-tech-sf-2026-tickets-1982304448969',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop'
         },
         {
             'title': 'SF Startup & Tech Mixer 2026',
@@ -82,7 +82,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.eventbrite.com/e/sf-startup-tech-mixer-2026-tickets-1981963075913',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'San Francisco HealthTech Startups, Investors, Innovators Networking Event',
@@ -93,7 +93,7 @@ CURATED_EVENTS = {
             'price': '$10',
             'url': 'https://www.eventbrite.com/e/san-francisco-healthtech-startups-investors-innovators-networking-event-tickets-1981326839914',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop'
         },
         {
             'title': 'Bay Area AI & Machine Learning Meetup',
@@ -104,7 +104,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/bay-area-ai-ml/events/ai-ml-february-2026/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop'
         },
         {
             'title': 'SF Founders & Entrepreneurs Coffee Meetup',
@@ -115,7 +115,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/sf-founders-entrepreneurs/events/feb-coffee-meetup/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         }
     ],
     'la': [
@@ -128,7 +128,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.eventbrite.com/e/la-tech-week-kickoff-networking-tickets-200001',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop'
         },
         {
             'title': 'Women in Tech LA Mixer',
@@ -139,7 +139,7 @@ CURATED_EVENTS = {
             'price': '$12',
             'url': 'https://www.eventbrite.com/e/women-in-tech-la-mixer-tickets-200002',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop'
         },
         {
             'title': 'LA Startup Founders Breakfast Club',
@@ -150,7 +150,7 @@ CURATED_EVENTS = {
             'price': '$15',
             'url': 'https://www.eventbrite.com/e/la-startup-founders-breakfast-club-tickets-200003',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'Crypto & Web3 Networking Night LA',
@@ -161,7 +161,7 @@ CURATED_EVENTS = {
             'price': '$20',
             'url': 'https://www.eventbrite.com/e/crypto-web3-networking-night-la-tickets-200004',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=600&fit=crop'
         },
         {
             'title': 'LA Tech & Innovation Happy Hour',
@@ -172,7 +172,7 @@ CURATED_EVENTS = {
             'price': '$10',
             'url': 'https://www.eventbrite.com/e/la-tech-innovation-happy-hour-tickets-200005',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
         },
         {
             'title': 'Product Management Meetup Los Angeles',
@@ -183,7 +183,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/la-product-management/events/pm-meetup-february/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'
         },
         {
             'title': 'LA Mobile App Developers Meetup',
@@ -194,7 +194,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/la-mobile-devs/events/mobile-meetup-feb/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
         },
         {
             'title': 'Entertainment Tech Summit LA',
@@ -205,7 +205,7 @@ CURATED_EVENTS = {
             'price': '$45',
             'url': 'https://www.eventbrite.com/e/entertainment-tech-summit-la-tickets-200006',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop'
         },
         {
             'title': 'LA SaaS Founders Roundtable',
@@ -216,7 +216,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://lu.ma/la-saas-founders-feb2026',
             'source': 'Luma',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'Cybersecurity Professionals Networking LA',
@@ -227,7 +227,7 @@ CURATED_EVENTS = {
             'price': '$15',
             'url': 'https://www.eventbrite.com/e/cybersecurity-professionals-networking-la-tickets-200007',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop'
         }
     ],
     'nyc': [
@@ -240,7 +240,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/ny-tech/events/nyc-tech-meetup-february/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop'
         },
         {
             'title': 'Women Who Code NYC Networking Night',
@@ -251,7 +251,7 @@ CURATED_EVENTS = {
             'price': '$10',
             'url': 'https://www.meetup.com/women-who-code-nyc/events/networking-feb-2026/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop'
         },
         {
             'title': 'NYC Startup Grind Fireside Chat',
@@ -262,7 +262,7 @@ CURATED_EVENTS = {
             'price': '$15',
             'url': 'https://www.eventbrite.com/e/nyc-startup-grind-fireside-chat-tickets-300001',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'FinTech Innovation Summit NYC',
@@ -273,7 +273,7 @@ CURATED_EVENTS = {
             'price': '$50',
             'url': 'https://www.eventbrite.com/e/fintech-innovation-summit-nyc-tickets-300002',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
         },
         {
             'title': 'Brooklyn Tech Hub Happy Hour',
@@ -284,7 +284,7 @@ CURATED_EVENTS = {
             'price': '$12',
             'url': 'https://www.eventbrite.com/e/brooklyn-tech-hub-happy-hour-tickets-300003',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
         },
         {
             'title': 'NYC AI Breakfast Club',
@@ -295,7 +295,7 @@ CURATED_EVENTS = {
             'price': '$18',
             'url': 'https://lu.ma/nyc-ai-breakfast-feb2026',
             'source': 'Luma',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop'
         },
         {
             'title': 'NYC Developer Bootcamp & Networking',
@@ -306,7 +306,7 @@ CURATED_EVENTS = {
             'price': '$25',
             'url': 'https://www.eventbrite.com/e/nyc-developer-bootcamp-networking-tickets-300004',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
         },
         {
             'title': 'NY TechStars Alumni Mixer',
@@ -317,7 +317,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://lu.ma/techstars-ny-mixer-feb',
             'source': 'Luma',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop'
         },
         {
             'title': 'NYC Tech Diversity & Inclusion Summit',
@@ -328,7 +328,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.eventbrite.com/e/nyc-tech-diversity-inclusion-summit-tickets-300005',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&h=600&fit=crop'
         },
         {
             'title': 'Manhattan Startup Founders Breakfast',
@@ -339,7 +339,7 @@ CURATED_EVENTS = {
             'price': '$20',
             'url': 'https://www.meetup.com/nyc-startup-founders/events/founders-breakfast-feb/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         }
     ],
     'chicago': [
@@ -352,7 +352,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.eventbrite.com/e/chicago-tech-networking-mixer-tickets-400001',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop'
         },
         {
             'title': 'Chicago Startup Grind February',
@@ -363,7 +363,7 @@ CURATED_EVENTS = {
             'price': '$15',
             'url': 'https://www.meetup.com/chicago-startup-grind/events/february-event/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'Women in Tech Chicago Luncheon',
@@ -374,7 +374,7 @@ CURATED_EVENTS = {
             'price': '$25',
             'url': 'https://www.eventbrite.com/e/women-in-tech-chicago-luncheon-tickets-400002',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop'
         },
         {
             'title': 'Chicago Tech Happy Hour at River North',
@@ -385,7 +385,7 @@ CURATED_EVENTS = {
             'price': '$10',
             'url': 'https://www.eventbrite.com/e/chicago-tech-happy-hour-river-north-tickets-400003',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
         },
         {
             'title': 'Chicago Blockchain & Crypto Meetup',
@@ -396,7 +396,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/chicago-blockchain/events/blockchain-feb-meetup/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop'
         },
         {
             'title': 'Chicago DevOps Engineers Meetup',
@@ -407,7 +407,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/chicago-devops/events/devops-feb-meetup/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
         },
         {
             'title': 'HealthTech Chicago Innovation Forum',
@@ -418,7 +418,7 @@ CURATED_EVENTS = {
             'price': '$30',
             'url': 'https://www.eventbrite.com/e/healthtech-chicago-innovation-forum-tickets-400004',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop'
         },
         {
             'title': 'Chicago Tech Founders Coffee Chat',
@@ -429,7 +429,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://lu.ma/chicago-founders-coffee-feb',
             'source': 'Luma',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'Chicago AI & ML Practitioners Meetup',
@@ -440,7 +440,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/chicago-ai-ml/events/ai-ml-feb-meetup/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop'
         },
         {
             'title': 'Chicago Product Management Networking',
@@ -451,7 +451,7 @@ CURATED_EVENTS = {
             'price': '$20',
             'url': 'https://www.eventbrite.com/e/chicago-product-management-networking-tickets-400005',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'
         }
     ],
     'san-diego': [
@@ -464,7 +464,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/sd-tech-pros/events/february-networking/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop'
         },
         {
             'title': 'SD Startup Week Opening Reception',
@@ -475,7 +475,7 @@ CURATED_EVENTS = {
             'price': '$15',
             'url': 'https://www.eventbrite.com/e/sd-startup-week-opening-reception-tickets-500001',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'Women in Tech San Diego Mixer',
@@ -486,7 +486,7 @@ CURATED_EVENTS = {
             'price': '$12',
             'url': 'https://www.eventbrite.com/e/women-in-tech-san-diego-mixer-tickets-500002',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop'
         },
         {
             'title': 'San Diego Biotech & HealthTech Forum',
@@ -497,7 +497,7 @@ CURATED_EVENTS = {
             'price': '$35',
             'url': 'https://www.eventbrite.com/e/san-diego-biotech-healthtech-forum-tickets-500003',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop'
         },
         {
             'title': 'SD Software Engineers Happy Hour',
@@ -508,7 +508,7 @@ CURATED_EVENTS = {
             'price': '$10',
             'url': 'https://www.meetup.com/sd-software-engineers/events/happy-hour-feb/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
         },
         {
             'title': 'San Diego Founders Breakfast Club',
@@ -519,7 +519,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://lu.ma/sd-founders-breakfast-feb',
             'source': 'Luma',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop'
         },
         {
             'title': 'San Diego AI & Robotics Meetup',
@@ -530,7 +530,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/sd-ai-robotics/events/ai-robotics-feb/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop'
         },
         {
             'title': 'Cybersecurity Professionals SD',
@@ -541,7 +541,7 @@ CURATED_EVENTS = {
             'price': '$15',
             'url': 'https://www.eventbrite.com/e/cybersecurity-professionals-sd-tickets-500004',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop'
         },
         {
             'title': 'San Diego Product Management Roundtable',
@@ -552,7 +552,7 @@ CURATED_EVENTS = {
             'price': '$20',
             'url': 'https://www.eventbrite.com/e/san-diego-product-management-roundtable-tickets-500005',
             'source': 'Eventbrite',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop'
         },
         {
             'title': 'San Diego Tech & Tacos Networking',
@@ -563,7 +563,7 @@ CURATED_EVENTS = {
             'price': 'Free',
             'url': 'https://www.meetup.com/sd-tech-tacos/events/tech-tacos-feb/',
             'source': 'Meetup',
-            'image': ''
+            'image': 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop'
         }
     ]
 }
