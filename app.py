@@ -13,15 +13,19 @@ import time
 
 # Import curated February 2026 events
 try:
-    from curated_events_feb2026_real import CURATED_EVENTS
-    print("✅ Loaded real curated February 2026 events")
+    from curated_events_feb2026_100 import CURATED_EVENTS
+    print("✅ Loaded 100 real curated February 2026 events (20 per city)")
 except ImportError:
     try:
-        from curated_events_feb2026 import CURATED_EVENTS
-        print("⚠️  Using backup curated events")
+        from curated_events_feb2026_real import CURATED_EVENTS
+        print("⚠️  Using 10-event fallback")
     except ImportError:
-        CURATED_EVENTS = None
-        print("❌ No curated events found")
+        try:
+            from curated_events_feb2026 import CURATED_EVENTS
+            print("⚠️  Using backup curated events")
+        except ImportError:
+            CURATED_EVENTS = None
+            print("❌ No curated events found")
 
 app = Flask(__name__)
 
