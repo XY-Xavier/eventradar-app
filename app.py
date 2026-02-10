@@ -13,9 +13,15 @@ import time
 
 # Import curated February 2026 events
 try:
-    from curated_events_feb2026 import CURATED_EVENTS
+    from curated_events_feb2026_real import CURATED_EVENTS
+    print("✅ Loaded real curated February 2026 events")
 except ImportError:
-    CURATED_EVENTS = None
+    try:
+        from curated_events_feb2026 import CURATED_EVENTS
+        print("⚠️  Using backup curated events")
+    except ImportError:
+        CURATED_EVENTS = None
+        print("❌ No curated events found")
 
 app = Flask(__name__)
 
