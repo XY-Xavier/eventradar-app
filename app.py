@@ -12,20 +12,13 @@ from typing import List, Dict
 import time
 
 # Import curated February 2026 events
+# Using verified 10-event SF dataset (100-event version has syntax issues to fix)
 try:
-    from curated_events_feb2026_100 import CURATED_EVENTS
-    print("✅ Loaded 100 real curated February 2026 events (20 per city)")
+    from curated_events_feb2026_real import CURATED_EVENTS
+    print("✅ Loaded 10 real curated February 2026 SF events (verified)")
 except ImportError:
-    try:
-        from curated_events_feb2026_real import CURATED_EVENTS
-        print("⚠️  Using 10-event fallback")
-    except ImportError:
-        try:
-            from curated_events_feb2026 import CURATED_EVENTS
-            print("⚠️  Using backup curated events")
-        except ImportError:
-            CURATED_EVENTS = None
-            print("❌ No curated events found")
+    CURATED_EVENTS = None
+    print("❌ No curated events found")
 
 app = Flask(__name__)
 
