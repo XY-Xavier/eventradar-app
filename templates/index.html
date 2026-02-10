@@ -30,26 +30,26 @@
         }
         
         .event-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
         }
         
         .event-image {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .event-card:hover .event-image {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #E60023;
+            transition: all 0.2s ease;
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, #5568d3 0%, #63408a 100%);
-            box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.3);
+            background: #CC0000;
+            transform: scale(1.02);
         }
         
         @keyframes slideIn {
@@ -64,26 +64,26 @@
         }
     </style>
 </head>
-<body class="bg-[#fafaf9] min-h-screen">
+<body class="bg-white min-h-screen">
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg border-b border-gray-100 sticky top-0 z-50">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-6">
-            <div class="flex items-center justify-between flex-wrap gap-4">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <i class="fas fa-compass text-white text-xl"></i>
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#E60023] rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-compass text-white text-lg sm:text-xl"></i>
                     </div>
-                    <div>
-                        <h1 class="text-2xl font-bold text-gray-900 tracking-tight">EventRadar</h1>
-                        <p class="text-sm text-gray-500 font-medium" id="citySubtitle">Multi-City Events</p>
+                    <div class="min-w-0">
+                        <h1 class="text-xl sm:text-2xl font-bold text-gray-900">EventRadar</h1>
+                        <p class="text-xs sm:text-sm text-gray-600 truncate" id="citySubtitle">Multi-City Events</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3">
-                    <select id="citySelector" class="px-5 py-2.5 border border-gray-200 rounded-xl font-medium text-gray-700 bg-white hover:border-purple-300 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 focus:outline-none cursor-pointer transition">
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <select id="citySelector" class="px-3 sm:px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none cursor-pointer transition">
                         <option value="">Loading cities...</option>
                     </select>
-                    <button onclick="refreshEvents()" id="refreshBtn" class="btn-primary text-white px-5 py-2.5 rounded-xl flex items-center space-x-2 font-medium shadow-lg shadow-purple-500/30 transition hover:shadow-xl hover:shadow-purple-500/40">
-                        <i class="fas fa-sync-alt"></i>
+                    <button onclick="refreshEvents()" id="refreshBtn" class="btn-primary text-white px-3 sm:px-5 py-2 rounded-full flex items-center gap-2 text-sm font-semibold transition">
+                        <i class="fas fa-sync-alt text-sm"></i>
                         <span class="hidden sm:inline">Refresh</span>
                     </button>
                 </div>
@@ -92,22 +92,22 @@
     </header>
 
     <!-- Filters Bar -->
-    <div class="bg-white border-b border-gray-100">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-5">
-            <div class="flex flex-wrap items-center gap-3">
-                <div class="flex-1 min-w-[240px]">
+    <div class="bg-gray-50 border-b border-gray-200">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-wrap items-center gap-2">
+                <div class="flex-1 min-w-[200px]">
                     <div class="relative">
-                        <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
                         <input type="text" id="searchInput" placeholder="Search events..." 
-                               class="w-full pl-11 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 focus:outline-none transition">
+                               class="w-full pl-10 pr-3 py-2 bg-white border border-gray-300 rounded-full text-sm focus:ring-2 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none transition">
                     </div>
                 </div>
-                <select id="priceFilter" class="px-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 focus:outline-none text-sm font-medium text-gray-700 bg-white hover:border-purple-300 transition cursor-pointer">
+                <select id="priceFilter" class="px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none transition cursor-pointer">
                     <option value="all">All Prices</option>
                     <option value="free">Free Only</option>
                     <option value="paid">Paid Events</option>
                 </select>
-                <select id="timeFilter" class="px-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 focus:outline-none text-sm font-medium text-gray-700 bg-white hover:border-purple-300 transition cursor-pointer">
+                <select id="timeFilter" class="px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#10B981] focus:border-[#10B981] focus:outline-none transition cursor-pointer">
                     <option value="all">All Time</option>
                     <option value="today">Today</option>
                     <option value="week">This Week</option>
@@ -118,47 +118,47 @@
     </div>
 
     <!-- Stats Bar -->
-    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition">
-                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Total Events</p>
-                <p class="text-3xl font-bold text-gray-900" id="totalCount">0</p>
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition">
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Total Events</p>
+                <p class="text-2xl sm:text-3xl font-bold text-gray-900" id="totalCount">0</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition">
-                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Free Events</p>
-                <p class="text-3xl font-bold bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent" id="freeCount">0</p>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition">
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Free Events</p>
+                <p class="text-2xl sm:text-3xl font-bold text-[#10B981]" id="freeCount">0</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition">
-                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">This Week</p>
-                <p class="text-3xl font-bold bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent" id="weekCount">0</p>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition">
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">This Week</p>
+                <p class="text-2xl sm:text-3xl font-bold text-[#E60023]" id="weekCount">0</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition">
-                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Last Updated</p>
-                <p class="text-sm font-semibold text-gray-900 mt-3" id="lastUpdated">Never</p>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition">
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Last Updated</p>
+                <p class="text-sm font-semibold text-gray-900 mt-2" id="lastUpdated">Never</p>
             </div>
         </div>
     </div>
 
     <!-- Events Grid -->
-    <main class="max-w-[1400px] mx-auto px-6 lg:px-12 pb-20">
-        <div id="loadingState" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div id="loadingState" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
             <!-- Loading skeletons -->
-            <div class="bg-white rounded-2xl shadow-sm skeleton h-[420px]"></div>
-            <div class="bg-white rounded-2xl shadow-sm skeleton h-[420px]"></div>
-            <div class="bg-white rounded-2xl shadow-sm skeleton h-[420px]"></div>
-            <div class="bg-white rounded-2xl shadow-sm skeleton h-[420px]"></div>
+            <div class="bg-gray-100 rounded-2xl skeleton h-[320px]"></div>
+            <div class="bg-gray-100 rounded-2xl skeleton h-[320px]"></div>
+            <div class="bg-gray-100 rounded-2xl skeleton h-[320px]"></div>
+            <div class="bg-gray-100 rounded-2xl skeleton h-[320px]"></div>
         </div>
         
-        <div id="eventsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 hidden">
+        <div id="eventsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 hidden">
             <!-- Events will be populated here -->
         </div>
 
         <div id="emptyState" class="hidden text-center py-20">
-            <div class="inline-block p-6 bg-gray-50 rounded-full mb-4">
-                <i class="fas fa-calendar-times text-gray-300 text-5xl"></i>
+            <div class="inline-block p-6 bg-gray-100 rounded-full mb-4">
+                <i class="fas fa-calendar-times text-gray-400 text-5xl"></i>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">No events found</h3>
-            <p class="text-gray-500">Try adjusting your filters or check back later</p>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">No events found</h3>
+            <p class="text-gray-600">Try adjusting your filters or check back later</p>
         </div>
     </main>
 
@@ -340,57 +340,48 @@
             const isPaid = event.price !== 'Free';
             
             return `
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden event-card group">
+                <div class="bg-white rounded-2xl overflow-hidden event-card group cursor-pointer shadow-sm hover:shadow-lg border border-gray-200">
                     ${event.image ? `
-                        <div class="relative h-64 bg-gray-100 overflow-hidden">
+                        <div class="relative aspect-[3/4] bg-gray-100 overflow-hidden">
                             <img src="${event.image}" alt="${event.title}" 
                                  class="w-full h-full object-cover event-image" 
-                                 onerror="this.parentElement.innerHTML='<div class=\\'h-full bg-gradient-to-br from-purple-400 via-pink-400 to-indigo-400 flex items-center justify-center\\'><i class=\\'fas fa-calendar-star text-white text-5xl opacity-40\\'></i></div>'">
-                            <div class="absolute top-4 right-4">
-                                <span class="inline-block px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md ${isPaid ? 'bg-white/90 text-gray-900' : 'bg-emerald-500/90 text-white shadow-lg shadow-emerald-500/30'}">
+                                 onerror="this.parentElement.innerHTML='<div class=\\'h-full bg-gray-200 flex items-center justify-center\\'><i class=\\'fas fa-calendar-star text-gray-400 text-4xl\\'></i></div>'">
+                            <div class="absolute top-2 right-2">
+                                <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold ${isPaid ? 'bg-white text-gray-900' : 'bg-[#10B981] text-white'}">
                                     ${event.price}
                                 </span>
                             </div>
                         </div>
                     ` : `
-                        <div class="relative h-64 bg-gradient-to-br from-purple-400 via-pink-400 to-indigo-400 flex items-center justify-center overflow-hidden">
-                            <i class="fas fa-calendar-star text-white text-6xl opacity-40"></i>
-                            <div class="absolute top-4 right-4">
-                                <span class="inline-block px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md ${isPaid ? 'bg-white/90 text-gray-900' : 'bg-emerald-500/90 text-white shadow-lg shadow-emerald-500/30'}">
+                        <div class="relative aspect-[3/4] bg-gray-200 flex items-center justify-center overflow-hidden">
+                            <i class="fas fa-calendar-star text-gray-400 text-5xl"></i>
+                            <div class="absolute top-2 right-2">
+                                <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold ${isPaid ? 'bg-white text-gray-900' : 'bg-[#10B981] text-white'}">
                                     ${event.price}
                                 </span>
                             </div>
                         </div>
                     `}
                     
-                    <div class="p-5">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-xs px-2.5 py-1 bg-purple-50 text-purple-700 rounded-lg font-semibold">
-                                ${event.source}
-                            </span>
-                            <span class="text-xs text-gray-500 font-medium">
-                                ${formattedDate}
-                            </span>
-                        </div>
-                        
-                        <h3 class="text-base font-bold text-gray-900 mb-3 line-clamp-2 leading-snug group-hover:text-purple-600 transition">
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2 leading-tight">
                             ${event.title}
                         </h3>
                         
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-center text-sm text-gray-600">
-                                <i class="fas fa-clock w-4 text-gray-400"></i>
-                                <span class="ml-2 font-medium">${formattedTime}</span>
+                        <div class="space-y-1 mb-3">
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fas fa-clock w-3 text-gray-400"></i>
+                                <span class="ml-1.5 font-medium">${formattedDate} • ${formattedTime}</span>
                             </div>
-                            <div class="flex items-start text-sm text-gray-600">
-                                <i class="fas fa-map-marker-alt w-4 text-gray-400 mt-0.5"></i>
-                                <span class="ml-2 line-clamp-1 font-medium">${event.location}</span>
+                            <div class="flex items-start text-xs text-gray-600">
+                                <i class="fas fa-map-marker-alt w-3 text-gray-400 mt-0.5"></i>
+                                <span class="ml-1.5 line-clamp-1 font-medium">${event.location}</span>
                             </div>
                         </div>
                         
                         <a href="${event.url}" target="_blank" 
-                           class="block w-full text-center btn-primary text-white px-4 py-2.5 rounded-xl text-sm font-semibold shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/35 transition">
-                            View Event →
+                           class="block w-full text-center btn-primary text-white px-3 py-2 rounded-full text-xs font-bold transition">
+                            View Event
                         </a>
                     </div>
                 </div>
@@ -418,13 +409,13 @@
 
         function showNotification(message, type = 'info') {
             const colors = {
-                success: 'bg-emerald-500',
-                error: 'bg-rose-500',
-                info: 'bg-purple-500'
+                success: 'bg-[#10B981]',
+                error: 'bg-[#E60023]',
+                info: 'bg-gray-900'
             };
             
             const notification = document.createElement('div');
-            notification.className = `fixed top-24 right-6 ${colors[type]} text-white px-6 py-4 rounded-2xl shadow-2xl z-50 font-medium`;
+            notification.className = `fixed top-20 right-4 ${colors[type]} text-white px-5 py-3 rounded-full shadow-lg z-50 text-sm font-semibold`;
             notification.style.animation = 'slideIn 0.3s ease-out';
             notification.textContent = message;
             
