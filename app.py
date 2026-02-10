@@ -11,6 +11,12 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 import time
 
+# Import curated February 2026 events
+try:
+    from curated_events_feb2026 import CURATED_EVENTS
+except ImportError:
+    CURATED_EVENTS = None
+
 app = Flask(__name__)
 
 # City configurations
@@ -34,6 +40,11 @@ CITIES = {
         'name': 'Chicago',
         'latitude': 41.8781,
         'longitude': -87.6298
+    },
+    'san-diego': {
+        'name': 'San Diego',
+        'latitude': 32.7157,
+        'longitude': -117.1611
     }
 }
 
@@ -53,8 +64,10 @@ CACHE_DURATION = 86400  # 24 hours in seconds
 
 class EventAggregator:
     def __init__(self):
-        self.eventbrite_token = os.environ.get('EVENTBRITE_TOKEN', '')
-        self.meetup_key = os.environ.get('MEETUP_KEY', '')
+        token = os.environ.get('EVENTBRITE_TOKEN', '')
+        self.eventbrite_token = token if token and 'your_' not in token else ''
+        key = os.environ.get('MEETUP_KEY', '')
+        self.meetup_key = key if key and 'your_' not in key else ''
         
     def get_all_events(self, city_code: str = 'sf') -> List[Dict]:
         """Aggregate events from all sources"""
@@ -115,8 +128,8 @@ class EventAggregator:
         events = []
         
         if not self.eventbrite_token:
-            print("Eventbrite token not configured - using demo data")
-            return self.get_demo_events('Eventbrite', city_info)
+            print("Eventbrite token not configured - using curated February 2026 events")
+            return self.get_curated_events(city_info)
         
         try:
             end_date = datetime.now() + timedelta(days=CONFIG['filters']['days_ahead'])
@@ -184,11 +197,9 @@ class EventAggregator:
             # Using the GraphQL API endpoint
             url = "https://api.meetup.com/gql"
             
-            # For now, return placeholder since Meetup requires complex auth
-            print("Meetup API integration requires OAuth - using mock data for MVP")
-            
-            # Add demo events for MVP testing
-            events = self.get_demo_events('Meetup', city_info)
+            # For now, return empty since Meetup requires complex auth
+            # Real curated events are returned via Eventbrite
+            print("Meetup API integration requires OAuth - skipping (using curated events)")
             
         except Exception as e:
             print(f"Meetup fetch error: {e}")
@@ -202,10 +213,7 @@ class EventAggregator:
         try:
             # Luma doesn't have a public API, we'll scrape or use RSS
             # For MVP, we'll add manual curated events or use public calendar URLs
-            print("Luma integration requires calendar scraping - placeholder for MVP")
-            
-            # Add demo events for MVP testing
-            events = self.get_demo_events('Luma', city_info)
+            print("Luma integration requires calendar scraping - skipping (using curated events)")
             
         except Exception as e:
             print(f"Luma fetch error: {e}")
@@ -225,60 +233,28 @@ class EventAggregator:
         
         return ', '.join(parts) if parts else "Location TBA"
     
-    def get_demo_events(self, source: str, city_info: Dict) -> List[Dict]:
-        """Generate demo events for testing and MVP"""
-        from datetime import datetime, timedelta
+    def get_curated_events(self, city_info: Dict) -> List[Dict]:
+        """Return curated real events from February 2026"""
         
-        city_name = city_info['name']
-        
-        # City-specific venues
-        venues = {
-            'San Francisco / Bay Area': ['The Battery', 'Philz Coffee, Palo Alto', 'GitHub HQ'],
-            'Los Angeles': ['WeWork DTLA', 'The Arts District', 'Santa Monica Pier'],
-            'New York City': ['WeWork SoHo', 'Brooklyn Tech Hub', 'Madison Square Garden'],
-            'Chicago': ['1871 Tech Hub', 'The Loop Co-working', 'Navy Pier']
-        }
-        
-        city_venues = venues.get(city_name, ['Downtown', 'City Center', 'Tech Hub'])
-        
-        demo_events = [
-            {
-                'title': f'{city_name.split("/")[0].strip()} Tech Networking Mixer',
-                'description': f'Join fellow tech professionals for networking and drinks in {city_name}.',
-                'start_time': (datetime.now() + timedelta(days=2, hours=18)).isoformat(),
-                'end_time': (datetime.now() + timedelta(days=2, hours=21)).isoformat(),
-                'location': f'{city_venues[0]}, {city_name.split("/")[0].strip()}',
-                'price': 'Free',
-                'url': 'https://example.com/event1',
-                'source': source,
-                'image': ''
-            },
-            {
-                'title': 'Startup Founders Breakfast',
-                'description': f'Monthly breakfast meetup for startup founders and entrepreneurs.',
-                'start_time': (datetime.now() + timedelta(days=5, hours=9)).isoformat(),
-                'end_time': (datetime.now() + timedelta(days=5, hours=11)).isoformat(),
-                'location': f'{city_venues[1]}, {city_name.split("/")[0].strip()}',
-                'price': '$15',
-                'url': 'https://example.com/event2',
-                'source': source,
-                'image': ''
-            },
-            {
-                'title': 'AI & Machine Learning Workshop',
-                'description': 'Hands-on workshop covering the latest in AI/ML technologies and practical applications.',
-                'start_time': (datetime.now() + timedelta(days=8, hours=14)).isoformat(),
-                'end_time': (datetime.now() + timedelta(days=8, hours=17)).isoformat(),
-                'location': f'{city_venues[2]}, {city_name.split("/")[0].strip()}',
-                'price': '$45',
-                'url': 'https://example.com/event3',
-                'source': source,
-                'image': ''
+        # Use curated real events if available
+        if CURATED_EVENTS:
+            city_name = city_info['name']
+            
+            # Map city names to curated event keys
+            city_map = {
+                'San Francisco / Bay Area': 'sf',
+                'Los Angeles': 'la',
+                'New York City': 'nyc',
+                'Chicago': 'chicago',
+                'San Diego': 'san-diego'
             }
-        ]
+            
+            city_key = city_map.get(city_name)
+            if city_key and city_key in CURATED_EVENTS:
+                return CURATED_EVENTS[city_key]
         
-        # Return 3 events for demo sources, or if Eventbrite is not configured
-        return demo_events[:3]
+        # Fallback to empty list if no curated events
+        return []
 
 aggregator = EventAggregator()
 
