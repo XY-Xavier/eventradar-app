@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventRadar - Bay Area Networking Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .skeleton {
+            animation: shimmer 2s infinite;
+            background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+            background-size: 1000px 100%;
+        }
+        .event-card {
+            transition: all 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-3 rounded-lg">
+                        <i class="fas fa-radar text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">EventRadar</h1>
+                        <p class="text-sm text-gray-600" id="citySubtitle">Multi-City Networking Events</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select id="citySelector" class="px-4 py-2 border-2 border-blue-500 rounded-lg font-semibold text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer">
+                        <option value="">Loading cities...</option>
+                    </select>
+                    <button onclick="refreshEvents()" id="refreshBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">Total Events</p>
+                        <p class="text-2xl font-bold text-gray-900" id="totalCount">0</p>
+                    </div>
+                    <i class="fas fa-calendar-alt text-blue-500 text-3xl"></i>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">Free Events</p>
+                        <p class="text-2xl font-bold text-green-600" id="freeCount">0</p>
+                    </div>
+                    <i class="fas fa-ticket-alt text-green-500 text-3xl"></i>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">This Week</p>
+                        <p class="text-2xl font-bold text-purple-600" id="weekCount">0</p>
+                    </div>
+                    <i class="fas fa-clock text-purple-500 text-3xl"></i>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600">Last Updated</p>
+                        <p class="text-sm font-semibold text-gray-900" id="lastUpdated">Never</p>
+                    </div>
+                    <i class="fas fa-sync text-indigo-500 text-3xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex flex-wrap items-center gap-4">
+                <div class="flex-1 min-w-[200px]">
+                    <input type="text" id="searchInput" placeholder="Search events..." 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                <select id="priceFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="all">All Prices</option>
+                    <option value="free">Free Only</option>
+                    <option value="paid">Paid Events</option>
+                </select>
+                <select id="timeFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="all">All Time</option>
+                    <option value="today">Today</option>
+                    <option value="week">This Week</option>
+                    <option value="month">This Month</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-16">
+        <div id="loadingState" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Loading skeletons -->
+            <div class="bg-white rounded-lg shadow skeleton h-64"></div>
+            <div class="bg-white rounded-lg shadow skeleton h-64"></div>
+            <div class="bg-white rounded-lg shadow skeleton h-64"></div>
+        </div>
+        
+        <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+            <!-- Events will be populated here -->
+        </div>
+
+        <div id="emptyState" class="hidden text-center py-16">
+            <i class="fas fa-calendar-times text-gray-400 text-6xl mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">No events found</h3>
+            <p class="text-gray-500">Try adjusting your filters or check back later</p>
+        </div>
+    </main>
+
+    <script>
+        let allEvents = [];
+        let filteredEvents = [];
+        let currentCity = localStorage.getItem('selectedCity') || 'sf';
+        let cities = [];
+
+        // Load events on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCities();
+            
+            // Setup filter listeners
+            document.getElementById('searchInput').addEventListener('input', filterEvents);
+            document.getElementById('priceFilter').addEventListener('change', filterEvents);
+            document.getElementById('timeFilter').addEventListener('change', filterEvents);
+            document.getElementById('citySelector').addEventListener('change', onCityChange);
+        });
+
+        async function loadCities() {
+            try {
+                const response = await fetch('/api/cities');
+                const data = await response.json();
+                
+                if (data.success) {
+                    cities = data.cities;
+                    const selector = document.getElementById('citySelector');
+                    selector.innerHTML = cities.map(city => 
+                        `<option value="${city.code}" ${city.code === currentCity ? 'selected' : ''}>
+                            📍 ${city.name}
+                        </option>`
+                    ).join('');
+                    
+                    // Update subtitle
+                    const selectedCity = cities.find(c => c.code === currentCity);
+                    if (selectedCity) {
+                        document.getElementById('citySubtitle').textContent = selectedCity.name;
+                    }
+                    
+                    // Load events for selected city
+                    loadEvents();
+                }
+            } catch (error) {
+                console.error('Error loading cities:', error);
+                showNotification('Failed to load cities', 'error');
+            }
+        }
+
+        function onCityChange(e) {
+            currentCity = e.target.value;
+            localStorage.setItem('selectedCity', currentCity);
+            
+            // Update subtitle
+            const selectedCity = cities.find(c => c.code === currentCity);
+            if (selectedCity) {
+                document.getElementById('citySubtitle').textContent = selectedCity.name;
+            }
+            
+            // Reload events
+            loadEvents();
+        }
+
+        async function loadEvents() {
+            try {
+                // Show loading state
+                document.getElementById('loadingState').classList.remove('hidden');
+                document.getElementById('eventsGrid').classList.add('hidden');
+                
+                const response = await fetch(`/api/events?city=${currentCity}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    allEvents = data.events;
+                    filteredEvents = [...allEvents];
+                    renderEvents();
+                    updateStats();
+                } else {
+                    showError('Failed to load events');
+                }
+            } catch (error) {
+                console.error('Error loading events:', error);
+                showError('Failed to load events');
+            }
+        }
+
+        async function refreshEvents() {
+            const btn = document.getElementById('refreshBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Refreshing...</span>';
+            
+            try {
+                const response = await fetch(`/api/refresh?city=${currentCity}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    await loadEvents();
+                    showNotification('Events refreshed successfully!', 'success');
+                } else {
+                    showNotification('Failed to refresh events', 'error');
+                }
+            } catch (error) {
+                showNotification('Failed to refresh events', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-sync-alt"></i> <span>Refresh</span>';
+            }
+        }
+
+        function filterEvents() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const priceFilter = document.getElementById('priceFilter').value;
+            const timeFilter = document.getElementById('timeFilter').value;
+            
+            filteredEvents = allEvents.filter(event => {
+                // Search filter
+                const matchesSearch = event.title.toLowerCase().includes(search) ||
+                                    event.description.toLowerCase().includes(search) ||
+                                    event.location.toLowerCase().includes(search);
+                
+                // Price filter
+                let matchesPrice = true;
+                if (priceFilter === 'free') {
+                    matchesPrice = event.price === 'Free';
+                } else if (priceFilter === 'paid') {
+                    matchesPrice = event.price !== 'Free';
+                }
+                
+                // Time filter
+                let matchesTime = true;
+                if (timeFilter !== 'all') {
+                    const eventDate = new Date(event.start_time);
+                    const now = new Date();
+                    const diffDays = Math.ceil((eventDate - now) / (1000 * 60 * 60 * 24));
+                    
+                    if (timeFilter === 'today') {
+                        matchesTime = diffDays === 0;
+                    } else if (timeFilter === 'week') {
+                        matchesTime = diffDays <= 7;
+                    } else if (timeFilter === 'month') {
+                        matchesTime = diffDays <= 30;
+                    }
+                }
+                
+                return matchesSearch && matchesPrice && matchesTime;
+            });
+            
+            renderEvents();
+        }
+
+        function renderEvents() {
+            const grid = document.getElementById('eventsGrid');
+            const loading = document.getElementById('loadingState');
+            const empty = document.getElementById('emptyState');
+            
+            loading.classList.add('hidden');
+            
+            if (filteredEvents.length === 0) {
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+                return;
+            }
+            
+            empty.classList.add('hidden');
+            grid.classList.remove('hidden');
+            
+            grid.innerHTML = filteredEvents.map(event => createEventCard(event)).join('');
+        }
+
+        function createEventCard(event) {
+            const date = new Date(event.start_time);
+            const formattedDate = date.toLocaleDateString('en-US', { 
+                weekday: 'short', month: 'short', day: 'numeric' 
+            });
+            const formattedTime = date.toLocaleTimeString('en-US', { 
+                hour: 'numeric', minute: '2-digit' 
+            });
+            
+            const isPaid = event.price !== 'Free';
+            const priceColor = isPaid ? 'text-orange-600' : 'text-green-600';
+            const priceBg = isPaid ? 'bg-orange-100' : 'bg-green-100';
+            
+            return `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden event-card">
+                    ${event.image ? `
+                        <div class="h-48 bg-gray-200 overflow-hidden">
+                            <img src="${event.image}" alt="${event.title}" 
+                                 class="w-full h-full object-cover" 
+                                 onerror="this.parentElement.innerHTML='<div class=\'h-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center\'><i class=\'fas fa-calendar-alt text-white text-5xl\'></i></div>'">
+                        </div>
+                    ` : `
+                        <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center">
+                            <i class="fas fa-calendar-alt text-white text-5xl"></i>
+                        </div>
+                    `}
+                    
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-bold text-gray-900 line-clamp-2 flex-1">${event.title}</h3>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-calendar w-5"></i>
+                                <span>${formattedDate} at ${formattedTime}</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-map-marker-alt w-5"></i>
+                                <span class="line-clamp-1">${event.location}</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-ticket-alt w-5 ${priceColor}"></i>
+                                <span class="font-semibold ${priceColor}">${event.price}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full">
+                                ${event.source}
+                            </span>
+                            <a href="${event.url}" target="_blank" 
+                               class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-blue-600 hover:to-indigo-700 transition flex items-center space-x-1">
+                                <span>Register</span>
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateStats() {
+            const total = allEvents.length;
+            const free = allEvents.filter(e => e.price === 'Free').length;
+            
+            const now = new Date();
+            const weekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+            const thisWeek = allEvents.filter(e => {
+                const eventDate = new Date(e.start_time);
+                return eventDate >= now && eventDate <= weekFromNow;
+            }).length;
+            
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('freeCount').textContent = free;
+            document.getElementById('weekCount').textContent = thisWeek;
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString('en-US', {
+                hour: 'numeric', minute: '2-digit'
+            });
+        }
+
+        function showNotification(message, type = 'info') {
+            const colors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                info: 'bg-blue-500'
+            };
+            
+            const notification = document.createElement('div');
+            notification.className = `fixed top-20 right-4 ${colors[type]} text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function showError(message) {
+            const loading = document.getElementById('loadingState');
+            loading.classList.add('hidden');
+            showNotification(message, 'error');
+        }
+    </script>
+</body>
+</html>
